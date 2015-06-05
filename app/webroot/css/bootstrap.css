@@ -11,11 +11,16 @@ html {
       -ms-text-size-adjust: 100%;
 }
 
+body,.content{
+background-color: #E6E6E6;
+
+}
+
 .box-border{
 background-color: #fff;
 border:2px solid #E6E6E6;
-/* box-shadow: 0 0 15px 1px #E6E6E6;*/
-border-radius: 7px;
+
+border-radius: 5px;
 padding:20px;
 
 }

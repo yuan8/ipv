@@ -16,7 +16,9 @@
 
 $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework');
 $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
+
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,21 +30,61 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	<?php
 		echo $this->Html->meta('icon');
 
-		// echo $this->Html->css('cake.generic');
+		echo $this->Html->css('cake.generic');
 		echo $this->Html->css('bootstrap');
+		echo $this->Html->script('jquery');
+		echo $this->Html->script('bootstrap');
+
+
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
-		echo $this->html->script('jquery');
-		echo $this->html->script('bootstrap');
-		echo $this->html->css('animated');
-
 	?>
 </head>
-<body>
-	<div id="container">
-	
-		<div id="content">
+<body >
+		<nav class="navbar navbar-default navbar-static-top">
+        <div class="container">
+          <div class="navbar-header">
+
+            <button type="button" class="navbar-toggle btn btn-success" data-toggle="collapse" data-target="#navbar" aria-expanded="true" aria-controls="navbar">
+             <span class="glyphicon glyphicon-menu-hamburger"> </span>
+             
+            </button>
+
+            <a class="navbar-brand" href="#">UPM</a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse" aria-expanded="true">
+          	<!-- class =  -->
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="/index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="#">Contact</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a href="#">Action</a></li>
+                  <li><a href="#">Another action</a></li>
+                  <li><a href="#">Something else here</a></li>
+                  <li class="divider"></li>
+                  <li class="dropdown-header">Nav header</li>
+                  <li><a href="#">Separated link</a></li>
+                  <li><a href="#">One more separated link</a></li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li class=""><a href="./">Default <span class="sr-only">(current)</span></a></li>
+              <li><a href="#">Static top</a></li>
+              <li><a href="#">Fixed top</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+      </nav>
+
+	<div id="container"  class="container-fluid" >
+
+		
+		<div>
 
 			<?php echo $this->Session->flash(); ?>
 
