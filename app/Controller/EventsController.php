@@ -27,6 +27,7 @@ class EventsController extends AppController {
 	}
 	public function home() {
 		$this->Event->recursive = 1;
+
 		$this->set('events', $this->Paginator->paginate());
 	}
 
@@ -41,9 +42,13 @@ class EventsController extends AppController {
 		if (!$this->Event->exists($id)) {
 			throw new NotFoundException(__('Invalid event'));
 		}
-		$options = array('conditions' => array('Event.' . $this->Event->primaryKey => $id));
-		$this->set('event', $this->Event->find('first', $options));
-	}
+			$options = array('conditions' => array('Event.' . $this->Event->primaryKey => $id));
+			$this->set('event', $this->Event->find('first', $options));
+		}
+
+	public function test(){
+		
+	}	
 	public function lihat($id = null) {
 		if (!$this->Event->exists($id)) {
 			throw new NotFoundException(__('Invalid event'));

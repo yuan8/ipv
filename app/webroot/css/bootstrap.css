@@ -13,18 +13,22 @@ html {
 
 body,.content{
 background-color: #E6E6E6;
-
 }
 
 .box-border{
+float:left;
 background-color: #fff;
 border:2px solid #E6E6E6;
-
 border-radius: 5px;
-padding:20px;
+padding-top:20px;
+padding-bottom: 20px;
 
 }
 
+
+.b-radius{
+  border-radius: 5px;
+}
 
 .error-message{
   background-color:#f0ad4e;
@@ -44,6 +48,7 @@ box-shadow: 1px 1px 10px #777;
 .border-success{
 border :3px solid  #5cb85c;
 }
+
 body {
   margin: 0;
 
@@ -1415,6 +1420,7 @@ a.text-danger:hover {
   color: #fff;
   background-color: #337ab7;
 }
+
 a.bg-primary:hover {
   background-color: #286090;
 }
@@ -1653,6 +1659,7 @@ pre code {
   padding-right: 15px;
   padding-left: 15px;
 }
+
 .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
   float: left;
 }
@@ -6640,3 +6647,16 @@ border: 2px solid #fff;
   border: 2px solid #fff;
 
 } 
+.ontop{
+  position: absolute;
+  width: 100%;
+  position: absolute;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-left: -15px;
+}
+.bg-dark{
+  color:#fff;
+  background-color: #555;
+}

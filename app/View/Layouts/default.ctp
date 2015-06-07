@@ -29,23 +29,21 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	</title>
 	<?php
 		echo $this->Html->meta('icon');
-
+		echo '<meta name="viewport" content="width=device-width, initial-scale=1">';
 		echo $this->Html->css('cake.generic');
 		echo $this->Html->css('bootstrap');
 		echo $this->Html->script('jquery');
 		echo $this->Html->script('bootstrap');
-
-
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
 </head>
-<body >
+<body>
+
 		<nav class="navbar navbar-default navbar-static-top">
         <div class="container">
           <div class="navbar-header">
-
             <button type="button" class="navbar-toggle btn btn-success" data-toggle="collapse" data-target="#navbar" aria-expanded="true" aria-controls="navbar">
              <span class="glyphicon glyphicon-menu-hamburger"> </span>
              
@@ -81,7 +79,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
         </div><!--/.container-fluid -->
       </nav>
 
-	<div id="container"  class="container-fluid" >
+	<div id="container"  class="container" >
 
 		
 		<div>
