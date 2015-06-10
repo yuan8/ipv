@@ -1,6 +1,6 @@
 <?php
 	class User extends AppModel {
 	public $name = 'User';
-	public $hasMany = array('Vote','Join');
+	public $hasMany = array('Vote');
 }
 ?>
