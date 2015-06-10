@@ -11,6 +11,16 @@ html {
       -ms-text-size-adjust: 100%;
 }
 
+.box-border{
+background-color: #fff;
+border:2px solid #E6E6E6;
+ box-shadow: 0 0 15px 1px #E6E6E6;
+border-radius: 7px;
+padding:20px;
+
+}
+
+
 .error-message{
   background-color:#f0ad4e;
 padding: 5px;
@@ -6616,3 +6626,12 @@ button.close {
 .required label:after {
   content:" * "; color:red;
 }
+
+.border-white{
+border: 2px solid #fff;
+}
+
+.border-width:hover{
+  border: 2px solid #fff;
+
+} 
