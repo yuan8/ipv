@@ -73,6 +73,20 @@ class MembereventsController extends AppController {
 		$events = $this->Memberevent->Event->find('list');
 		$this->set(compact('users', 'events'));
 	}
+	public function tambah() {
+		if ($this->request->is('post')) {
+			$this->Memberevent->create();
+			if ($this->Memberevent->save($this->request->data)) {
+				$this->Session->setFlash(__('The memberevent has been saved.'));
+				return $this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('The memberevent could not be saved. Please, try again.'));
+			}
+		}
+		$users = $this->Memberevent->User->find('list');
+		$events = $this->Memberevent->Event->find('list');
+		$this->set(compact('users', 'events'));
+	}
 
 /**
  * edit method
@@ -82,6 +96,26 @@ class MembereventsController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
+		if (!$this->Memberevent->exists($id)) {
+			throw new NotFoundException(__('Invalid memberevent'));
+		}
+		if ($this->request->is(array('post', 'put'))) {
+			if ($this->Memberevent->save($this->request->data)) {
+				$this->Session->setFlash(__('The memberevent has been saved.'));
+				return $this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('The memberevent could not be saved. Please, try again.'));
+			}
+		} else {
+			$options = array('conditions' => array('Memberevent.' . $this->Memberevent->primaryKey => $id));
+			$this->request->data = $this->Memberevent->find('first', $options);
+		}
+		$users = $this->Memberevent->User->find('list');
+		$events = $this->Memberevent->Event->find('list');
+		$this->set(compact('users', 'events'));
+	}
+
+	public function ubah($id = null) {
 		if (!$this->Memberevent->exists($id)) {
 			throw new NotFoundException(__('Invalid memberevent'));
 		}
