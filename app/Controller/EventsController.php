@@ -14,8 +14,25 @@ class EventsController extends AppController {
  *
  * @var array
  */
+	public $uses=array();
 	public $components = array('Paginator', 'Session');
 
+	public function add() {
+ 
+		if ($this->request->is('post')) {
+			$this->Event->create();
+			
+			if ($this->Event->save($this->request->data)) {
+				$this->Session->setFlash(__('The event has been saved.'));
+				return $this->redirect(array('action' => 'index'));
+
+			} else {
+				$this->Session->setFlash(__('The event could not be saved. Please, try again.'));
+			}
+		}
+		$users = $this->Event->User->find('list');
+		$this->set(compact('users'));
+	}
 /**
  * index method
  *
@@ -24,10 +41,19 @@ class EventsController extends AppController {
 	public function index() {
 		$this->Event->recursive = 0;
 		$this->set('events', $this->Paginator->paginate());
+
 	}
+
+
 	public function home() {
-		$this->Event->recursive = 3;
+		$this->Event->recursive = 1;
+		$this->paginate = array(
+			'limit' => 4, 
+			'order' =>'Event.id DESC'
+		);
+
 		$this->set('events', $this->Paginator->paginate());
+
 	}
 
 
@@ -62,8 +88,8 @@ class EventsController extends AppController {
  * add method
  *
  * @return void
- */public $uses=array();
 
+<<<<<<< HEAD
 	public function add() {
 
 		if ($this->request->is('post')) {
@@ -99,6 +125,13 @@ class EventsController extends AppController {
 		
 		$this->set(compact('users'));
 	}
+=======
+ // disini di edit yuan
+ */
+	
+
+	
+>>>>>>> dc3307858d7196b48cc01b5b7f44978629d1014b
 
 
 /**
