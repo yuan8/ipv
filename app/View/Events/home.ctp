@@ -1,40 +1,55 @@
-<?php 
+<?php $count=8 ?>
 
-foreach($events as $event):
+
+
+<?php foreach ($events as $event): ?>
+
+<?php if($count<=0){
+	break;
+}
+ 
+ $count--;
 ?>
-<?php echo h($event['Event']['title']); ?>
+<div class="box-border col-md-12 col-xs-12 x1"> 
 
+<?php
 
-anan
-<br>
+if( h($event['Event']['url_pic'])==null){
+	$img='pic_kosong.png';
+	}
+	else{
+		$img=h($event['Event']['url_pic']);
+	}
+?>
+
+<div class="col-md-12">
+
+<div class="col-md-6">
+<?php echo $this->Html->image($img, array('class' => 'b-radius img-responsive')) ?>
+</div>
+
+<div class="col-md-6">
+
+<h4 ><?php echo h($event['Event']['title'])?></h4>
+
+<p class="text-justify" > &nbsp;&nbsp;<?php echo substr(h($event['Event']['description']),0,1000);?>
+ ....
+</p>
+
+</div>
+
+	<div class="col-md-12 col-xs-12 b-radius bg-dark" style="padding :7px; margin-top:10px;">
 	
-	<?php foreach( $event['Memberevent'] as $memberevent): ?>
-		<?php echo $memberevent['title']; ?>
-		<br>
+	<p class="col-md-11 col-xs-8" >
+	Berahir Pada : <?php echo h($event['Event']['end'])?>
+	</P>
 
-			<?php foreach( $memberevent['Vote'] as $vote): ?>
-			<?php echo 'id voting '. $vote['id']; ?>
-			<br>
-			<?php echo 'user'. $vote['User']['name']; ?>
+	<a href=<?php echo "/ipv/events/lihat/".h($event['Event']['id']); ?>   class="col-md-1 col-xs-4 btn btn-success">Lihat</a>
+	
+	</div>
 
-			
-			<br>
-			
-		
-			
+	</div>
+</div>
 
-		
-				
-			<br>
-
-
-
-
-			<?php endforeach; ?>
-			<br>
-
-		<?php endforeach; ?>
-
-<br>
-<hr style="height:20px; background-color:red;">
 <?php endforeach; ?>
+
