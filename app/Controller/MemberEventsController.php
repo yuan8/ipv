@@ -41,6 +41,15 @@ class MembereventsController extends AppController {
 		$this->set('memberevent', $this->Memberevent->find('first', $options));
 	}
 
+	
+	public function lihat($id = null) {
+		if (!$this->Memberevent->exists($id)) {
+			throw new NotFoundException(__('Invalid memberevent'));
+		}
+		$options = array('conditions' => array('Memberevent.' . $this->Memberevent->primaryKey => $id));
+		$this->set('memberevent', $this->Memberevent->find('first', $options));
+	}
+
 /**
  * add method
  *

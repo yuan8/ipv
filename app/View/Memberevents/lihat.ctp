@@ -1,37 +1,51 @@
-<div class="memberevents view">
-<h2><?php echo __('Memberevent'); ?></h2>
-	<dl>
-		<dt><?php echo __('Id'); ?></dt>
-		<dd>
-			<?php echo h($memberevent['Memberevent']['id']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Event'); ?></dt>
-		<dd>
-			<?php echo $this->Html->link($memberevent['Event']['title'], array('controller' => 'events', 'action' => 'view', $memberevent['Event']['id'])); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Title'); ?></dt>
-		<dd>
-			<?php echo h($memberevent['Memberevent']['title']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Url Pic'); ?></dt>	
-		<dd>
-			<?php echo h($memberevent['Memberevent']['url_pic']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('Description'); ?></dt>
-		<dd class="text-justify">
-			<?php echo h($memberevent['Memberevent']['description']); ?>
-			&nbsp;
-		</dd>
-		<dt><?php echo __('User'); ?></dt>
-		<dd>
-			<?php echo $this->Html->link($memberevent['User']['name'], array('controller' => 'users', 'action' => 'view', $memberevent['User']['id'])); ?>
-			&nbsp;
-		</dd>
-	</dl>
+<div class="memberevents view box-border text-center">
+	<h2><?php echo __('Member Event'); ?></h2>
+
+	<div class="container">
+		<div class="container">
+			<div class="row">
+			<div class="col-md-5">
+				<dt>
+					<?php echo h($memberevent['Memberevent']['id']); ?>
+					&nbsp;
+				</dt>
+			</div>
+			<div class="col-md-5">
+				<dt>
+					<?php echo $this->Html->link($memberevent['Event']['title'], array('controller' => 'events', 'action' => 'view', $memberevent['Event']['id'])); ?>
+					&nbsp;
+				</dt>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-6">	
+				<dt>
+					<?php echo h($memberevent['Memberevent']['url_pic']); ?>
+					&nbsp;
+				</dt>
+				<dt>
+					<?php echo h($memberevent['Memberevent']['title']); ?>
+					&nbsp;
+				</dt>
+				<dt>
+					<?php echo $this->Html->link($memberevent['User']['name'], array(
+					'controller' => 'users', 
+					'action' => 'view', 
+					$memberevent['User']['id'])); ?>
+					&nbsp;
+				</dt>
+			</div>
+		</div>
+		<div class="col-md-offset-3 col-md-5">
+			<div>
+				<dd class="text-justify">
+					<?php echo h($memberevent['Memberevent']['description']); ?>
+					&nbsp;
+				</dd>
+			</div>
+		</div>
+		</div>
+	</div>
 </div>
 <div class="actions">
 	<h3><?php echo __('Actions'); ?></h3>

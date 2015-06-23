@@ -29,6 +29,11 @@ class UsersController extends AppController {
 		$this->set('users', $this->Paginator->paginate());
 	}
 
+	public function home() {
+		$this->User->recursive = 3;
+		$this->set('users', $this->Paginator->paginate());
+	}
+
 /**
  * view method
  *
