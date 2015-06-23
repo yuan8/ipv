@@ -1,4 +1,4 @@
-<div class="container box-border col-md-5">
+<div class="box-border col-md-offset-3 col-md-6">
 	<?php echo $this->Form->create('Memberevent'); ?>
 	<fieldset>
 		<legend><?php echo __('Edit Memberevent'); ?></legend>
@@ -15,5 +15,9 @@
 			'class'=>'form-control'));
 	?>
 	</fieldset>
-	<?php echo $this->Form->end(__('Submit')); ?>
+	<?php echo $this->Form->Button('Submit', array(
+	'class'=>'btn btn-success'
+	)
+);
+		echo $this->Form->end(); ?>
 </div>

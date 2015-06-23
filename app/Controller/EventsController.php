@@ -80,10 +80,24 @@ class EventsController extends AppController {
 		$users = $this->Event->User->find('list');
 		
 		$this->set(compact('users'));
-		
+	}
 
-		
+	public function tambah() {
 
+		if ($this->request->is('post')) {
+			$this->Event->create();
+			
+			if ($this->Event->save($this->request->data)) {
+				$this->Session->setFlash(__('The event has been saved.'));
+				return $this->redirect(array('action' => 'index'));
+
+			} else {
+				$this->Session->setFlash(__('The event could not be saved. Please, try again.'));
+			}
+		}
+		$users = $this->Event->User->find('list');
+		
+		$this->set(compact('users'));
 	}
 
 
@@ -112,6 +126,26 @@ class EventsController extends AppController {
 		$users = $this->Event->User->find('list');
 		$this->set(compact('users'));
 	}
+	public function ubah($id = null) {
+		if (!$this->Event->exists($id)) {
+			throw new NotFoundException(__('Invalid event'));
+		}
+		if ($this->request->is(array('post', 'put'))) {
+			if ($this->Event->save($this->request->data)) {
+				$this->Session->setFlash(__('The event has been saved.'));
+				return $this->redirect(array('action' => 'index'));
+			} else {
+				$this->Session->setFlash(__('The event could not be saved. Please, try again.'));
+			}
+		} else {
+			$options = array('conditions' => array('Event.' . $this->Event->primaryKey => $id));
+			$this->request->data = $this->Event->find('first', $options);
+		}
+		$users = $this->Event->User->find('list');
+		$this->set(compact('users'));
+	}
+
+
 
 /**
  * delete method

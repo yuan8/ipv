@@ -112,10 +112,17 @@ class UsersController extends AppController {
 		return $this->redirect(array('action' => 'index'));
 	}
 
-	public function login(){
-		
-		
-		
+	public function login(){ 
+		if($this->request->is('post')){ 
+			if($this->Auth->login()){ 
+				$this->redirect($this->Auth->redirect()); 
+			}
+			else{ 
+				$this->Session->setFlash('Username atau password anda salah'); 
+			} 
+		} 
+	} 
+	public function logout(){ 
+		$this->redirect($this->Auth->logout());
 	}
-	
 }

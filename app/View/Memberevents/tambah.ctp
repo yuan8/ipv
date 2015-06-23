@@ -1,10 +1,3 @@
-<style type="text/css">
-.box{
-	border: 1px solid black;
-	border-radius: 10px;
-}
-</style>
-
 <div class="container box-border col-md-offset-2 col-md-8">
 &nbsp;&nbsp;
 <center><?php echo $this->Form->create('Memberevent'); ?></center>

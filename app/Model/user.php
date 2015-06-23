@@ -4,6 +4,7 @@ class User extends AppModel{
 
 public $name='User';
 public $hasMany= array('Event','Memberevent','Vote');
+public $displayField = 'name';
 public $validate=array(
 'name'=> array(
 	'notEmpty'=>array(
@@ -32,12 +33,22 @@ public $validate=array(
 	)
 
 ),
-'password'=>array(
-	'notEmpty'=>array(
-	'rule'=>'notEmpty',
-	'message'=>'Emailnya ngak boleh kosong !'
-	)
-)
+'password'=>array( 
+			'Not empty'=>array( 
+			'rule'=>'notEmpty', 
+			'message'=>'Mohon masukkan password anda' 
+			), 
+			'Match passwords' =>array( 
+			'rule'=>'matchPasswords', 
+			'message'=>'Password anda tidak cocok' 
+			) 
+		), 
+		'password_confirmation'=>array( 
+			'Not empty'=>array( 
+			'rule'=>'notEmpty', 
+			'message'=>'Password anda tidak cocok' 
+			) 
+		) 
 
 );
 
