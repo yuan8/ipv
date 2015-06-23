@@ -25,7 +25,11 @@ class MembereventsController extends AppController {
 		$this->Memberevent->recursive = 0;
 		$this->set('memberevents', $this->Paginator->paginate());
 	}
-
+	public function home() {
+		$this->Memberevent->recursive = 0;
+		$this->set('memberevents', $this->Paginator->paginate());
+	}
+	
 /**
  * view method
  *
