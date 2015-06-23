@@ -26,10 +26,10 @@ class EventsController extends AppController {
 		$this->set('events', $this->Paginator->paginate());
 	}
 	public function home() {
-		$this->Event->recursive = 1;
-
+		$this->Event->recursive = 3;
 		$this->set('events', $this->Paginator->paginate());
 	}
+
 
 /**
  * view method
@@ -62,8 +62,10 @@ class EventsController extends AppController {
  * add method
  *
  * @return void
- */
+ */public $uses=array();
+
 	public function add() {
+
 		if ($this->request->is('post')) {
 			$this->Event->create();
 			
@@ -78,7 +80,12 @@ class EventsController extends AppController {
 		$users = $this->Event->User->find('list');
 		
 		$this->set(compact('users'));
+		
+
+		
+
 	}
+
 
 /**
  * edit method
