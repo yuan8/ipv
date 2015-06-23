@@ -41,10 +41,19 @@ class EventsController extends AppController {
 	public function index() {
 		$this->Event->recursive = 0;
 		$this->set('events', $this->Paginator->paginate());
+
 	}
+
+
 	public function home() {
 		$this->Event->recursive = 1;
+		$this->paginate = array(
+			'limit' => 4, 
+			'order' =>'Event.id DESC'
+		);
+
 		$this->set('events', $this->Paginator->paginate());
+
 	}
 
 
