@@ -13,8 +13,7 @@
 		echo $this->Form->input('title',array(
 			'class'=>'form-control'));
 		echo $this->Form->input('url_pic',array(
-			'type'=>'file',
-			'label'=>false));
+			'class'=>'form-control'));
 		echo $this->Form->input('description',array(
 			));
 

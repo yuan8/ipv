@@ -4,7 +4,7 @@
 	<?php
 		echo $this->Form->input('title',array(
 			'class'=>'form-control'));
-		echo $this->Form->input('Url_pic', array('type' => 'file'));
+		echo $this->Form->input('Url_pic', array('class' => 'form-control'));
 		// echo $this->Form->input('url_pic');
 		echo $this->Form->input('description');
 		echo $this->Form->input('start', array(
