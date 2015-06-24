@@ -10,7 +10,7 @@
 			'placeholder'=>'Input your username'
 			)
 		);
-
+		
 		echo $this->Form->Input('password',array(
 			'label'=>false,
 			'class'=>'form-control',
@@ -21,8 +21,14 @@
 			'class'=>'btn btn-primary col-md-12'
 			)
 		);
+		?>
+		<br>
+		<a class="btn btn-danger col-md-12" href="/ipv/users/tambah">Daftar</a>
+		<?php
 		echo $this->Form->end(); 
 		?>
+
+		
 	</div>
 	
 		

@@ -4,7 +4,7 @@
 		<legend><?php echo __('Add Event'); ?></legend>
 	<?php
 		echo $this->Form->input('title');
-		echo $this->Form->input('Url_pic', array('type' => 'file'));
+		echo $this->Form->input('url_pic');
 		// echo $this->Form->input('url_pic');
 		echo $this->Form->input('description');
 		echo $this->Form->input('start');

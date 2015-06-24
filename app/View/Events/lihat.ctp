@@ -79,11 +79,18 @@ foreach ($event['Memberevent'] as $memberevent): ?>
 			$has = $values[0]; 
 		
 			?>
+			<?php
+			if($current_user['role']=='admin'){
+			echo '
 			<div class="col-md-12 bg-danger b-radius">
+			<h5 class="text-center">hasil voting='. $has.' </h5>
+			<h5 class="text-center"> </h5>
+			</div>	';
 
-			<h5 class="text-center">hasil voting= <?php echo $has;  ?> </h5>
-			<h5 class="text-center">  </h5>
-</div>		</div>
+			}
+
+			?>
+</div>
 </div>
 
 <?php

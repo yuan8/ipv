@@ -15,16 +15,10 @@ class VotesController extends AppController {
  * @var array
  */
 
-public function checklog(){
-	parent::checklog();
- 		
-
-	 //halaman yaang boleh di akses sebelum login pada folder view user
-	}
 
 public function beforeFilter(){
  			
-         if($this->checklog()){
+         if(true){
          	$this->Auth->allow('add');	
          }
          else{
