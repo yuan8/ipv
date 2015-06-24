@@ -155,4 +155,13 @@ class MembereventsController extends AppController {
 		}
 		return $this->redirect(array('action' => 'index'));
 	}
+	public function search() {
+        if (!isset($this->request->query['keywords'])) {
+            throw new BadRequestException();
+        }
+
+        $results = $this->Memberevent->findByKeywords($this->request->query['keywords']);
+
+        $this->set('results', $results);
+	}
 }

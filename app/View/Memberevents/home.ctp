@@ -1,3 +1,8 @@
+<?php 
+	echo $this->Form->create('Memberevent', array('type' => 'get'));
+	echo $this->Form->input('Memberevent.keywords');
+	echo $this->Form->end('Search');
+?>
 <?php foreach ($memberevents as $memberevent): ?>
 <div class="box-border">
 	&nbsp;
