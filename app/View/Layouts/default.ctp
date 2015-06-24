@@ -49,13 +49,37 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
              
             </button>
 
-            <a class="navbar-brand" href="#">Internal Paramadina Voting <br><i style="font-size:12px;">Appaa...?</i></a>
+            <a class="navbar-brand" href="/ipv/events/home">Internal Paramadina Voting <br><i style="font-size:12px;">Appaa...?</i></a>
           </div>
           <div id="navbar" class="navbar-collapse collapse" aria-expanded="true">
           	<!-- class =  -->
             
             <ul class="nav navbar-nav navbar-right">
-              <li class=""><a  href="/ipv/users/login" ><button class="btn btn-success">- Masuk -</button> </a></li>
+
+
+	           <li> <?php if($logged_in): ?>
+ 
+				  <?php
+					echo "<a  href='/ipv/users/logout' ><button class='btn btn-success'>
+					".$current_user['username']." | logout </button> </a>"; ?>
+				 <?php else: ?>
+				<?php  echo "<a  href='/ipv/users/login' ><button class='btn btn-success'>
+					 - masuk -</button> </a>";?>
+				 <?php endif; ?></li>
+				 <li><?php 
+				 if($current_user['role']=='admin'){
+				 	echo  "<a  href='/ipv/events/index' ><button class='btn btn-danger'>
+					 - Admin -</button> </a>";
+
+				 }
+
+
+				 ?></li>
+				 
+
+
+
+              
              <!--   <li class=""><a href="./"  > <button class="btn btn-success">Keluar</button> </a></li> -->
              
             </ul>
@@ -67,6 +91,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		<div>
 
 			<?php echo $this->Session->flash(); ?>
+			<?php echo $this->Session->flash('auth'); ?>
 
 			<?php echo $this->fetch('content'); ?>
 		</div>

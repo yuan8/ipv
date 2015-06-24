@@ -2,10 +2,8 @@
 		
 		<h2 class="text-center">Login</h2> 
 		<?php 
-		echo $this->Form->create(array(
-			
-			)
-		); 
+		echo $this->Form->create(array());
+		 
 		echo $this->Form->Input('username', array(
 			'label'=>false,
 			'class'=>'form-control',
@@ -20,11 +18,11 @@
 			)
 		);
 		echo $this->Form->button('Login', array(
-			'class'=>'btn btn-primary'
+			'class'=>'btn btn-primary col-md-12'
 			)
 		);
 		echo $this->Form->end(); 
 		?>
 	</div>
-	<div class="container well">
+	
 		

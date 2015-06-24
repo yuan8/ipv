@@ -1,8 +1,19 @@
 <?php
 
+App::uses('AppModel', 'Model');
+App::uses('BlowfishPasswordHasher', 'Controller/Component/Auth');
 class User extends AppModel{
 
+
+public function beforeSave($options = array()){
+ if (isset($this->data['User']['password'])){
+ $this->data['User']['password'] = AuthComponent::password($this->data['User']['password']);
+  }
+ return true;
+ }
+
 public $name='User';
+
 public $hasMany= array('Event','Memberevent','Vote');
 public $displayField = 'name';
 public $validate=array(
@@ -37,20 +48,13 @@ public $validate=array(
 			'Not empty'=>array( 
 			'rule'=>'notEmpty', 
 			'message'=>'Mohon masukkan password anda' 
-			), 
-			'Match passwords' =>array( 
-			'rule'=>'matchPasswords', 
-			'message'=>'Password anda tidak cocok' 
-			) 
-		), 
-		'password_confirmation'=>array( 
-			'Not empty'=>array( 
-			'rule'=>'notEmpty', 
-			'message'=>'Password anda tidak cocok' 
-			) 
-		) 
+			)
+	), 
+			
 
 );
+
+
 
 }
 

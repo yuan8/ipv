@@ -58,7 +58,7 @@ foreach ($event['Memberevent'] as $memberevent): ?>
 				</div>
 
 			<input name="data[Vote][memberevent_id]" id="VoteMembereventId" value=<?php echo "".$memberevent['id']?> style="display:none;">
-			<input name="data[Vote][user_id]" id="VoteUserId"  value="1" style="display:none;">
+			<input name="data[Vote][user_id]" id="VoteUserId" style="display:none;" value=<?php echo "". $current_user['id']." "; ?>  />
 			<div class="btn-group col-md-12">
 
 			<button type="submit" class="btn btn-danger  ">Vote <span class="glyphicon glyphicon-heart"></span></button>

@@ -14,6 +14,27 @@ class VotesController extends AppController {
  *
  * @var array
  */
+
+public function checklog(){
+	parent::checklog();
+ 		
+
+	 //halaman yaang boleh di akses sebelum login pada folder view user
+	}
+
+public function beforeFilter(){
+ 			
+         if($this->checklog()){
+         	$this->Auth->allow('add');	
+         }
+         else{
+         	$this->Auth->allow('nothing');
+         }
+         $this->set('logged_in', $this->Auth->loggedIn());
+         $this->set('current_user', $this->Auth->user());
+}
+
+
 	public $components = array('Paginator', 'Session');
 
 /**
@@ -51,7 +72,7 @@ class VotesController extends AppController {
 			$this->Vote->create();
 			if ($this->Vote->save($this->request->data)) {
 				$this->Session->setFlash(__('The vote has been saved.'));
-				return $this->redirect(array('action' => 'index'));
+				return $this->redirect(array('controller'=>'events','action' => 'home'));
 			} else {
 				$this->Session->setFlash(__('The vote could not be saved. Please, try again.'));
 			}
