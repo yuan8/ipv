@@ -19,6 +19,11 @@
 		top:280px;
 		left: 100px;
 	}
+	.button{
+		position: absolute;
+		left: 500px;
+		top: 450px;
+	}
 	
 </style>
 <div class="container">
@@ -43,8 +48,5 @@
 			&nbsp;
 		</div>
 	</div>
-	<div class="row">
-			<?php echo $this->Html->link(__('Edit Memberevent'), array('action' => 'edit', $memberevent['Memberevent']['id'])); ?>
-			<?php echo $this->Form->postLink(__('Delete Memberevent'), array('action' => 'delete', $memberevent['Memberevent']['id']), array(), __('Are you sure you want to delete # %s?', $memberevent['Memberevent']['id'])); ?>
-		</div>
+	
 </div>
