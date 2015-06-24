@@ -65,8 +65,25 @@ foreach ($event['Memberevent'] as $memberevent): ?>
 
 			<a href= <?php echo "/ipv/memberevents/view/".$memberevent['id']; ?> class="btn btn-success">Lihat</a>
 			</div>
+
 			</form>
-</div>
+
+			<?php  
+			$cuk=$memberevent['id'];
+			$connection = mysql_connect("localhost","root");
+      		$db = mysql_select_db( "voting");
+
+      		$msql="SELECT COUNT(memberevent_id) AS n FROM `votes` WHERE `memberevent_id`='$cuk'";
+			$has=mysql_query($msql);
+			$values = mysql_fetch_array($has); 
+			$has = $values[0]; 
+		
+			?>
+			<div class="col-md-12 bg-danger b-radius">
+
+			<h5 class="text-center">hasil voting= <?php echo $has;  ?> </h5>
+			<h5 class="text-center">  </h5>
+</div>		</div>
 </div>
 
 <?php
