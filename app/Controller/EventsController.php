@@ -173,25 +173,52 @@ class EventsController extends AppController {
 	}
 
 
+public function search() {
+			if(!empty($this->data['Event']['keyword'])) {
+			$keyword = $this->data['Event']['keyword'];
 
-/**
- * delete method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
-	public function delete($id = null) {
-		$this->Event->id = $id;
-		if (!$this->Event->exists()) {
-			throw new NotFoundException(__('Invalid event'));
+			$options = array(
+			'fields' => array(
+			'Event.title',
+			'Event.url_pic',
+			'Event.start',
+			'Event.end',
+			'Event.description'
+			),
+
+			
+			'conditions' => array(
+			'or' => array(
+				'Event.title LIKE' => '%' . $keyword . '%',
+				'Event.description LIKE' => '%' . $keyword . '%'
+				
+			)
+			));
+			
+			$result = $this->Event->find('all', $options);
+			$this->set('result', $result);
+			if(empty($result)) {
+				$this->Session->setFlash('Maaf, keyword: "<strong>'.' '. $keyword.'</strong>"'.' tidak dapat ditemukan.');
+			}
+			else {
+				$this->Session->setFlash('Data ditemukan dengan keyword: "<strong>'.' '. $keyword.'</strong>"');
+			}
+			$this->set('keyword', $keyword);
+			$this->data = null;
+			}
 		}
-		$this->request->allowMethod('post', 'delete');
-		if ($this->Event->delete()) {
-			$this->Session->setFlash(__('The event has been deleted.'));
-		} else {
-			$this->Session->setFlash(__('The event could not be deleted. Please, try again.'));
-		}
-		return $this->redirect(array('action' => 'index'));
-	}
-}
+
+
+
+
+
+/**  * delete method  *  * @throws NotFoundException  * @param string $id  *
+@return void  */     public function delete($id = null) {
+$this->Event->id = $id;         if (!$this->Event->exists()) {
+throw new NotFoundException(__('Invalid event'));         }
+$this->request->allowMethod('post', 'delete');         if
+($this->Event->delete()) {             $this->Session->setFlash(__('The event
+has been deleted.'));         } else {
+$this->Session->setFlash(__('The event could not be deleted. Please, try
+again.'));         }         return $this->redirect(array('action' =>
+'index'));     } }

@@ -77,7 +77,7 @@ public function checklog(){
 
  public function beforeFilter(){
         
-         $this->Auth->allow('lihat','home','login','logout');
+         $this->Auth->allow('lihat','home','login','logout','test','search');
          $this->set('logged_in', $this->Auth->loggedIn());
          $this->set('current_user', $this->Auth->user());
 }
