@@ -31,25 +31,59 @@ App::uses('Controller', 'Controller');
  * @link		http://book.cakephp.org/2.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller {
-/*
-	public $components = array('Session', 
-		'Auth'=>array( 
-			'loginRedirect'=>array('controller'=>'users', 'action'=>'index'),
-			'logoutRedirect'=>array('controller'=>'users', 'action'=>'index'),
-			'authError'=>'Anda tidak dapat mengakes halaman ini',
-			'authorize'=>array('Controller') 
-		) 
-	); 
-	public function isAuthorized($user){ 
-		if($this->Session->check('Auth.User') == 'reguler'){
-			$this->Auth->allow('index', 'edit');
-		}
-		return true;
-	} 
-	public function beforeFilter(){ 
-		$this->Auth->allow('index');
-		$this->set('logged_in', $this->Auth->loggedIn());
-		$this->set('current_user', $this->Auth->user()); 
-	}
-*/	
+    public $login;
+	public $components = array(
+         'Session',
+         'Auth'=>array(
+         'loginRedirect' =>array('controller'=>'Events', 'action'=>'home'),
+
+         'logoutRedirect' =>array('controller'=>'Events', 'action'=>'home'),
+
+         'authError'=>' Anda tidak dapat mengakes halaman ini silahkan login terlebih dahulu',
+
+         'authorize'=>array('Controller')
+         )
+
+    );
+
+ public function isAuthorized($user){
+ if (isset($user['role']) && ($user['role'] === 'admin')) {
+        $this->login=true;
+        return true;
+    }
+    if(isset($user['role']) && ($user['role'] === 'reguler')){
+     $this->login=true;
+    return false;
+    }
+
+     else{
+        $this->login=false;
+        return false;
+     }
+
+}
+
+public function checklog(){
+    if($this->login)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+
+}
+
+ public function beforeFilter(){
+        
+         $this->Auth->allow('lihat','home','login','logout');
+         $this->set('logged_in', $this->Auth->loggedIn());
+         $this->set('current_user', $this->Auth->user());
+}
+
+    public function getTransactionDetail() {
+        return 0;
+    }
+    //...
 }

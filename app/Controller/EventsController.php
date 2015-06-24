@@ -88,8 +88,6 @@ class EventsController extends AppController {
  * add method
  *
  * @return void
-
-<<<<<<< HEAD
 	public function add() {
 
 		if ($this->request->is('post')) {
@@ -125,13 +123,9 @@ class EventsController extends AppController {
 		
 		$this->set(compact('users'));
 	}
-=======
  // disini di edit yuan
  */
 	
-
-	
->>>>>>> dc3307858d7196b48cc01b5b7f44978629d1014b
 
 
 /**
